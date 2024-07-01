@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Looping</title>
+    <script defer src="https://cdn.jsdelivr.net/npm/alpinejs@3.14.1/dist/cdn.min.js"></script>
+</head>
+
+<body>
+    <!-- <div x-data="{
+        fruits: ['Apple', 'Banana', 'Cherry', 'Date', 'Elderberry'],
+    }">
+        <ol>
+            <template x-for="fruit, index in fruits">
+                <div>
+                    <span x-text="index"></span>:<span x-text="fruit"></span>
+                </div>>
+            </template>
+        </ol>
+
+    </div> -->
+
+
+    <!-- <div x-data="{
+        people: [{
+            id: 1,
+            name: 'John Doe',
+        }, {
+            id: 2,
+            name: 'Jane Doe',
+        }, {
+            id: 3,
+            name: 'Jim Doe',
+        }, {
+            id: 4,
+            name: 'Jill Doe',
+        }],
+    }">
+    
+    <template x-for="person in people" :key="person.id">
+        <div x-text="person.name"></div>
+    </template> -->
+
+
+    <div x-data="{
+        people: [{
+            id: 1,
+            name: 'John Doe',
+            points: 100,
+        }, {
+            id: 2,
+            name: 'Jane Doe',
+            points: 200,
+        }, {
+            id: 3,
+            name: 'Jim Doe',
+            points: 300,
+        }, {
+            id: 4,
+            name: 'Jill Doe',
+            points: 400,
+        }],
+
+        
+
+
+
+        incrementPoints(id){
+            this.people.find((p) => p.id === id).points++;
+        }
+    }">
+    
+
+    <template x-for="person in people">
+        <div>
+            <span x-text="person.name"></span> ( <span x-text="person.points"></span> points)
+            <button @click="incrementPoints(person.id)">Increment Points</button>
+        </div>
+    </template>
+
+
+    </div>
+
+
+
+    </div>
+</body>
+
+</html>

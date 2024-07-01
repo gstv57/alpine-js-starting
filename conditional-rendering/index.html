@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Conditional Rendering</title>
+    <script defer src="https://cdn.jsdelivr.net/npm/alpinejs@3.14.1/dist/cdn.min.js"></script>
+</head>
+
+<body>
+    <!-- <div x-data="{  show: false }">
+        <div x-show="show">Am Im visible?</div>
+
+        <button x-on:click="show = true">Show-me</button>
+    </div> -->
+
+
+    <!-- <div x-data="{  show: false }">
+        
+        <button x-on:click="show = true">Show-me</button>
+        
+        <template x-if="show">
+            <div x-show="show">Am Im visible?</div>
+        </template>
+    </div> -->
+
+    <div x-data="{  
+        show: false,    
+        users: [
+        {
+            id: 1,
+            name: 'John Doe',
+            points: 10,
+        }, 
+        { 
+            id: 2,
+            name: 'Jane Doe',
+            points: 20,
+        }
+        ],
+
+        usersOrderedByPoints (){
+            return this.users.sort((a, b) => b.points - a.points)
+        }
+        }">
+
+        <button x-on:click="show = true">Show users</button>
+
+        <template x-if="show">
+            <template x-for="user in usersOrderedByPoints">
+                <div>
+                    <span x-text="user.name"></span>:<span x-text="user.points"></span>
+                </div>
+            </template>
+        </template>
+    </div>
+
+
+</body>
+
+</html>

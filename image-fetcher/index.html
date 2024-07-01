@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Image Fetcher</title>
+    <script defer src="https://cdn.jsdelivr.net/npm/alpinejs@3.14.1/dist/cdn.min.js"></script>
+</head>
+
+<body>
+    <div 
+        x-data="{
+            'query': '',
+            'img': '',
+
+            getImages() {
+                this.img = `https://picsum.photos/200/300`
+            }
+        }">
+
+        <form x-on:submit.prevent="getImages">
+
+            <input type="text" x-model="query">
+            <button type="submit">Search</button>
+        </form>
+
+        <div x-show="img">
+            <img x-bind:src="img" style="width: 300px;">
+        </div>
+
+
+    </div>
+
+</body>
+
+</html>

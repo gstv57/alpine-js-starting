@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Text Html</title>
+    <script defer src="https://cdn.jsdelivr.net/npm/alpinejs@3.14.1/dist/cdn.min.js"></script>
+</head>
+
+<body>
+    <!-- <div x-data="{ hello: 'Hello World  !!! ' }">
+        <h1 x-text="hello.toUpperCase()"></h1>
+    </div> -->
+
+
+    <div x-data="{
+        body: '<p>hello</p>'
+    }">
+    </div>
+
+        <span x-html="body"></span>
+    </div>
+</body>
+
+</html>

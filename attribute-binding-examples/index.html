@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Attribute binding examples</title>
+    <script defer src="https://cdn.jsdelivr.net/npm/alpinejs@3.14.1/dist/cdn.min.js"></script>
+
+    <style>
+        .bold {
+            font-weight: bold;
+        }
+    </style>
+</head>
+
+<body>
+
+    <!-- <div x-data="{
+        selected: [],
+        people: [
+            { id: 1 , name: 'Alex' },
+            { id: 2 , name: 'John' },
+            { id: 3 , name: 'Jane' },
+        ]
+    }">
+
+        <template x-for="person in people">
+            <div>
+                <input type="checkbox" x-model="selected" x-bind:value="person.id" x-bind:id="`person_${person.id}`">
+                <span x-text="person.name" x-bind:class="{  'bold': selected.includes(person.id.toString()) }"></span>
+            </div>
+        </template>
+
+    </div> -->
+
+
+
+    <style>
+        .progress {
+            height: 10px;
+            width: 300px;
+            background-color: #ccc;
+        }
+
+        .progress-inner {
+            height: 10px;
+            background-color: slategray;
+        }
+
+        button {
+            margin-top: 10px;
+        }
+    </style>
+
+
+    <div x-data="{
+            progress: 0,
+
+            increment(){
+                this.progress++
+            },
+
+            init() {
+                let interval = setInterval(() => {
+                    if(this.progress >= 100){
+                        clearInterval(interval)
+                    }
+                    this.increment()
+                }, 100);
+            }
+        }">
+
+        <div class="progress">
+            <div class="progress-inner" x-bind:style="`width: ${progress}%;`"></div>
+        </div>
+
+        <button x-on:click="increment">increment</button>
+    </div>
+
+</body>
+
+</html>
