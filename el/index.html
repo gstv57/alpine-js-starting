@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>El</title>
+    <script defer src="https://cdn.jsdelivr.net/npm/alpinejs@3.14.1/dist/cdn.min.js"></script>
+</head>
+
+<body>
+    <!-- <div x-data x-init="$el.innerHTML = marked($el.innerText)">
+        This is ***markdown***.
+    </div> -->
+
+    <!-- <div x-data x-on:click="window.navigator.clipboard.writeText($el.innerText)">
+        123456789
+    </div> -->
+
+    <input type="text" value="123456789" x-data x-on:click="window.navigator.clipboard.writeText($el.value); $el.select()">
+</body>
+
+</html>
