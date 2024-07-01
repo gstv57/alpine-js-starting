@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Hacker News Search</title>
+    <script defer src="https://cdn.jsdelivr.net/npm/alpinejs@3.14.1/dist/cdn.min.js"></script>
+    <script src="https://cdn.tailwindcss.com"></script>
+</head>
+
+<body>
+    <div x-data="{
+        query: '',
+        results: [],
+
+            performSearch(query){
+                fetch(`https://hn.algolia.com/api/v1/search?query=${query}`)
+                .then(response => response.json())
+                .then(results => this.results = results.hits)
+            },
+
+            init(){
+                this.$watch('query', (query) => {
+                if(query === '' ) {
+                        this.results = []
+                        return
+                    }
+
+                    this.performSearch(query)
+                })
+            }
+        }">
+
+        <div class="flex justify-center items-center mt-1">
+            <input type="text" x-model.debounce="query" class="border-2 border-black rounded" placeholder="Search here">
+        </div>
+
+        <p x-show="query.length" class="text-center">
+            Your search for <strong x-text="query"></strong> returned <strong x-text="results.length"></strong> results.
+        </p>
+
+        <div class="bg-gray-300 flex-wrap p-2">
+            <template x-for="result in results" :key="result.objectID">
+                <div>
+                    <h4 x-text="result.title" class="bg-white font-bold"></h4>
+                    <a x-bind:href="result.url" href="" x-text="result.url" target="_blank"></a>
+                </div>
+            </template>
+        </div>
+
+
+
+    </div>
+</body>
+
+</html>
